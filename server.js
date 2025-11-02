@@ -116,18 +116,18 @@ function detectarProblema(mensaje) {
 // Función para buscar proyectos reales en Google
 async function buscarProyectosEnGoogle(problema, tipoProblema) {
     try {
-        // Mapeo de problemas a queries de búsqueda
+        // Mapeo de problemas a queries de búsqueda (más amplias para encontrar más resultados)
         const searchQueries = {
-            'perros': 'proyecto niños perros callejeros comunidad',
-            'basura': 'proyecto niños limpieza barrio basura',
-            'parques': 'proyecto niños creación parque comunidad',
-            'delincuencia': 'proyecto niños seguridad barrio vecinal',
-            'señales': 'proyecto niños señalización tránsito',
-            'postas': 'proyecto salud móvil comunidad',
-            'escuela': 'proyecto niños pintar escuela colegio comunidad',
-            'agua': 'proyecto niños agua potable desagüe comunidad',
-            'luz': 'proyecto niños iluminación alumbrado público',
-            'pistas': 'proyecto niños reparación calles pistas baches'
+            'perros': 'proyecto perros callejeros comunidad latinoamérica',
+            'basura': 'proyecto limpieza reciclaje barrio escuela',
+            'parques': 'proyecto crear parque espacio público comunidad',
+            'delincuencia': 'proyecto seguridad ciudadana barrio seguro',
+            'señales': 'proyecto señalización vial tránsito escolar',
+            'postas': 'proyecto salud comunitaria móvil',
+            'escuela': 'pintar escuela colegio infraestructura educativa voluntarios',
+            'agua': 'proyecto agua potable saneamiento comunidad',
+            'luz': 'proyecto iluminación pública LED solar',
+            'pistas': 'proyecto pavimentación calles veredas comunidad'
         };
 
         const query = searchQueries[tipoProblema] || problema;
@@ -136,9 +136,8 @@ async function buscarProyectosEnGoogle(problema, tipoProblema) {
             auth: process.env.GOOGLE_API_KEY,
             cx: process.env.GOOGLE_CX,
             q: query,
-            num: 3, // Máximo 3 resultados
-            gl: 'pe', // Priorizar resultados de Perú
-            lr: 'lang_es' // Solo en español
+            num: 5, // Buscar 5 resultados (mostraremos 3)
+            lr: 'lang_es' // Solo en español (quitamos gl:'pe' para buscar en toda Latinoamérica)
         });
 
         if (!res.data.items) {
