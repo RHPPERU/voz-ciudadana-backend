@@ -99,12 +99,16 @@ const proyectosReales = {
 function detectarProblema(mensaje) {
     const mensajeLower = mensaje.toLowerCase();
 
-    if (mensajeLower.match(/perro|animal|mascota|callejero/)) return 'perros';
+    if (mensajeLower.match(/perro|animal|mascota|callejero|gato/)) return 'perros';
     if (mensajeLower.match(/basura|suci|limpi|residuo|desperdicio/)) return 'basura';
-    if (mensajeLower.match(/parque|jugar|área verde|recreación/)) return 'parques';
+    if (mensajeLower.match(/parque|jugar|área verde|recreación|cancha/)) return 'parques';
     if (mensajeLower.match(/delincuen|robo|segur|miedo|peligro/)) return 'delincuencia';
     if (mensajeLower.match(/señal|cruce|tránsito|semáforo/)) return 'señales';
     if (mensajeLower.match(/posta|médico|salud|enferm|doctor/)) return 'postas';
+    if (mensajeLower.match(/escuela|colegio|pint|muro|pared|fachada/)) return 'escuela';
+    if (mensajeLower.match(/agua|desagüe|caño|tubería|inunda/)) return 'agua';
+    if (mensajeLower.match(/luz|alumbrado|poste|oscur/)) return 'luz';
+    if (mensajeLower.match(/pista|calle|hueco|bache/)) return 'pistas';
 
     return null;
 }
@@ -119,7 +123,11 @@ async function buscarProyectosEnGoogle(problema, tipoProblema) {
             'parques': 'proyecto niños creación parque comunidad',
             'delincuencia': 'proyecto niños seguridad barrio vecinal',
             'señales': 'proyecto niños señalización tránsito',
-            'postas': 'proyecto salud móvil comunidad'
+            'postas': 'proyecto salud móvil comunidad',
+            'escuela': 'proyecto niños pintar escuela colegio comunidad',
+            'agua': 'proyecto niños agua potable desagüe comunidad',
+            'luz': 'proyecto niños iluminación alumbrado público',
+            'pistas': 'proyecto niños reparación calles pistas baches'
         };
 
         const query = searchQueries[tipoProblema] || problema;
