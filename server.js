@@ -99,7 +99,8 @@ const proyectosReales = {
 function detectarProblema(mensaje) {
     const mensajeLower = mensaje.toLowerCase();
 
-    if (mensajeLower.match(/perro|animal|mascota|callejero|gato/)) return 'perros';
+    if (mensajeLower.match(/gato/)) return 'gatos';
+    if (mensajeLower.match(/perro|animal|mascota|callejero/)) return 'perros';
     if (mensajeLower.match(/basura|suci|limpi|residuo|desperdicio/)) return 'basura';
     if (mensajeLower.match(/parque|jugar|área verde|recreación|cancha/)) return 'parques';
     if (mensajeLower.match(/delincuen|robo|segur|miedo|peligro/)) return 'delincuencia';
@@ -119,6 +120,7 @@ async function buscarProyectosEnGoogle(problema, tipoProblema) {
         // Mapeo de problemas a queries de búsqueda (más amplias para encontrar más resultados)
         const searchQueries = {
             'perros': 'proyecto perros callejeros comunidad latinoamérica',
+            'gatos': 'proyecto gatos callejeros adopción esterilización comunidad',
             'basura': 'proyecto limpieza reciclaje barrio escuela',
             'parques': 'proyecto crear parque espacio público comunidad',
             'delincuencia': 'proyecto seguridad ciudadana barrio seguro',
